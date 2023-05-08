@@ -1,0 +1,29 @@
+.footer-top {
+    background-color: #232323;
+    width: 100%;
+    height: 200px;
+    color: #fff;
+    padding-top: 25px;
+    font-size: 13px;
+}
+.bottom-footer {
+    width: 100%;
+    height: 50px;
+}
+.bottom-footer > .container {
+    display: flex;
+    justify-content: space-between;
+}
+.follow_option {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 15px;
+}
+.name {
+    padding-left: 38px;
+}
+
+ul li {
+    list-style-type: none;
+    line-height: 28px;
+}

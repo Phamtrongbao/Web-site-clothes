@@ -1,0 +1,115 @@
+.account {
+    background-image: url("https://colorlib.com/etc/lf/Login_v4/images/bg-01.jpg");
+    width: 100%;
+    min-height: 150vh;
+    object-fit: cover;
+    align-items: center;
+    background-position: center;
+    background-repeat: unset;
+    background-size: cover;
+}
+
+.log {
+    position: absolute;
+    top: 35px;
+    left: 530px;
+    width: 500px;
+    background: #fff;
+    border-radius: 10px;
+    min-height: 90vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.account-content {
+    margin-top: 40px;
+}
+
+.input-acc {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.icon-acc {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    text-align: center;
+    color: red;
+    box-shadow: "0px 2px 5px rgba(0, 0, 0, 0.1)";
+}
+
+.lock-acc {
+    display: flex;
+    justify-content: space-around;
+}
+
+.eye-icon {
+    position: absolute;
+    top: 215px;
+    left: 390px;
+    background: none;
+}
+
+.eye-btn {
+    background-color: #fff;
+    border: none;
+    width: 0;
+    height: 0;
+}
+
+.forgot-password {
+    margin-left: 280px;
+    margin-top: 15px;
+    color: grey;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: serif;
+}
+
+.account-log {
+    width: 85%;
+    margin: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 20px;
+    color: #fff;
+    font-family: "Times New Roman", Times, serif;
+    font-weight: 600;
+    font-size: 30px;
+    background: -webkit-linear-gradient(left, #00dbde, #00dbde, #fc00ff, #fc00ff);
+    transform: translate(1px);
+    transition: all 0.6s ease;
+}
+
+.account-log:hover {
+    transition: all 0.9 ease;
+    background: -webkit-linear-gradient(right, #fc00ff, #00dbde, #fc00ff, #00dbde);
+}
+
+.account-log:active {
+    transform: translateY(-10px);
+
+    background: -webkit-linear-gradient(right, #fc00ff, #fc00ff, #00dbde, #00dbde);
+}
+
+.btn-up {
+    text-align: center;
+    color: grey;
+    font-size: 20px;
+    font-weight: 500;
+    font-family: serif;
+}
+
+
+.back{
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    border: none;
+    background-color: #fff;
+    color: grey;
+    display: flex;
+    
+}
