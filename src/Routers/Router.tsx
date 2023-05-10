@@ -13,6 +13,8 @@ import { BrowserRouter } from 'react-router-dom';
 import Register from '../Component/Register/Register';
 import ShoppingCart from '../Component/RenderCart/ShoppingCart';
 import Bill from '../Component/RenderCart/Bill';
+import Page from '../Component/Page/Page';
+import ProductDetails from '../Component/ProductDetails/ProductDetails';
 
 
 
@@ -57,6 +59,14 @@ const Routers = () => {
                     path:'/bill',
                     element:<Bill/>
 
+                },
+                {
+                    path:'/page',
+                    element:<Page/>
+                },
+                {
+                    path:'/:id/:slug',
+                    element:<ProductDetails/>
                 }
             ],
         },

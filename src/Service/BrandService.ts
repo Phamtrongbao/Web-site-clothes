@@ -20,7 +20,10 @@ export class BrandService extends BaseService {
   PostOrder = (value:any) =>{
     return this.post("Orders/CreateOrders",value)
   }
-
+  //search product
+  SearchProduct = (keyword: string) => {
+    return this.get(`admin/searchProduct?q=${keyword}`,null);
+  };
  
 }
 

@@ -28,7 +28,6 @@ export default function ShowModalProduct(props: ShowModalProductProps) {
         console.log(size)
     };
     const addToCart = () => {
-    
         if (selectedColor && selectedSize) {          
             const newProduct = { ...product, Color: selectedColor, Size: selectedSize };
             dispatch(addToCarts(newProduct))   

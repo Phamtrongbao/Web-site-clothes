@@ -1,0 +1,48 @@
+
+.Nameproduct {
+    display: flex;
+    color: black;
+}
+
+.bills {
+    color: black;
+    border: solid 1px grey;
+    font-family: initial;
+    font-weight: 700;
+    align-items: center;
+}
+
+.Invoice {
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    height: 50px;
+    width: 100%;
+    padding-top: 12px;
+}
+
+.person {
+    display: flex;
+    padding-left: 40px;
+    font-weight: 500;
+}
+
+.person-child {
+    padding-left: 60px;
+}
+
+.tit {
+    font-weight: 700;
+}
+
+.accept {
+    font-family: initial;
+    font-weight: 700;
+    display: flex;
+    margin-left: 110px;
+    margin-top: 50px;
+}
+
+.bak {
+    display: flex;
+}

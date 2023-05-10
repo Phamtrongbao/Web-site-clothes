@@ -8,6 +8,8 @@ import { NavLink } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
 export default function ShoppingCart() {
     const cartItems = useSelector(selectCartItems);
+    const storedUser = localStorage.getItem('user');
+    const user = storedUser != null ? JSON.parse(storedUser) : null;
   const cartItemsFromStorage = JSON.parse(localStorage.getItem("cartItems") || "[]");
   const [totalPrice, setTotalPrice] = useState(Number(localStorage.getItem("totalPrice")));
   console.log(totalPrice)
@@ -55,22 +57,26 @@ export default function ShoppingCart() {
 
   const handleBuyProduct = async () => {
     try {
-    //   const data = await brand.PostOrder(order);
-    //   console.log(data.data);
-        notification.success({
-            message:'Order Success',
-            description: (
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: `<div style="font-size:20px,font-family:"serif"> View at <a href="/bill">bill</a> </div>`,           
-                  }}
-                />
-              ),
-            style:{
-                marginTop:70
-            }
-
-        })
+      if (!user) {
+        await notification.error({
+           message: 'You are not logged in'
+         })
+        await setTimeout(() => {
+           window.location.replace("/loginCustomer")
+         },450)
+       } else {
+         const data = await brand.PostOrder(order);
+         console.log(data.data);
+         await notification.success({
+           message: 'Order Success',
+           style: {
+             marginTop: 70
+           }
+         })
+         await setTimeout(() => {
+           window.location.replace("/bill")
+         }, 450)
+       }
     } catch (error) {
       console.log(error);
       alert('Đặt hàng thất bại!');
