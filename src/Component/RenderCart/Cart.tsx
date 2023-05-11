@@ -55,20 +55,20 @@ export default function CartComponent() {
   }
 
   const renderTotalPrice = () => {
-    return <span style={{ display: "flex", marginBottom: 20, marginTop: 20 ,marginLeft:30,fontFamily:'-moz-initial'}}>
-      <div style={{ width: 100, fontSize: 17, color: "red",paddingTop:1 }}> TOTALPRICE:</div> <div style={{ color: "red", fontSize: 18, paddingLeft: 20 }}>{calculateTotalPrice().toLocaleString()}vnđ</div>
+    return <span style={{ display: "flex", marginBottom: 20, marginTop: 20, marginLeft: 30, fontFamily: '-moz-initial' }}>
+      <div style={{ width: 100, fontSize: 17, color: "red", paddingTop: 1 }}> TOTALPRICE:</div> <div style={{ color: "red", fontSize: 18, paddingLeft: 20 }}>{calculateTotalPrice().toLocaleString()}vnđ</div>
     </span>
   }
 
   const handleBuyProduct = async () => {
     try {
       if (!user) {
-       await notification.error({
+        await notification.error({
           message: 'You are not logged in'
         })
-       await setTimeout(() => {
+        await setTimeout(() => {
           window.location.replace("/loginCustomer")
-        },450)
+        }, 450)
       } else {
         const data = await brand.PostOrder(order);
         console.log(data.data);
@@ -92,10 +92,10 @@ export default function CartComponent() {
   const renderCart = () => {
     return cartItems.map((item: any, index) => {
       return <Fragment key={index}>
-        <tr style={{  fontFamily:'-moz-initial',fontSize:16}} >
+        <tr style={{ fontFamily: '-moz-initial', fontSize: 16 }} >
           <th scope="row">{index + 1}</th>
           <td>{item.Name}</td>
-          <td><img style={{ width: 70, height: 70 ,paddingTop:10}} src={item.Image} alt="" /></td>
+          <td><img style={{ width: 70, height: 70, paddingTop: 10 }} src={item.Image} alt="" /></td>
           <td style={{ textAlign: 'center', paddingTop: 25, display: "flex" }}>
             <button className="btn btn-danger mr-2" onClick={() => {
               handleDecreaseAmount(item._id)
@@ -123,8 +123,8 @@ export default function CartComponent() {
     )
   }
 
-  
- 
+
+
   return (
     <div className="div">
       <button style={{ border: 'none', background: '#FFFF', fontSize: 15, fontWeight: 800, }}
@@ -172,7 +172,7 @@ export default function CartComponent() {
           <div className="line-bottom"></div>
           <div style={{ display: 'flex' }}>
             {renderTotalPrice()}
-            <button onClick={handleBuyProduct} style={{ border: "solid 1px grey", height: 40, width: "30%", background: 'black', fontFamily: 'serif', color: '#FFFF', marginTop: 10 ,marginLeft:200}}>
+            <button onClick={handleBuyProduct} style={{ border: "solid 1px grey", height: 40, width: "30%", background: 'black', fontFamily: 'serif', color: '#FFFF', marginTop: 10, marginLeft: 200 }}>
               MAKE PAYMENT
             </button>
           </div>

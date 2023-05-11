@@ -3,9 +3,7 @@ import { useProduct } from '../../Hook/BrandHook';
 import { useState } from "react";
 import { Product } from '../../api/BrandType';
 import ShowModalProduct from './ShowModalProduct';
-import { TOKEN } from '../../util/setting';
-import { redirect } from 'react-router';
-import { NavLink } from 'react-router-dom';
+import { Rate } from 'antd';
 
 export default function RenderProduct() {
     const [limit, setLimit] = useState(4);
@@ -44,20 +42,16 @@ export default function RenderProduct() {
                                             alt={product.Name.toString()}
                                         />
                                         <div className="product-actions">
-                                            <div className="but">
-                                                <button className="btn btn-success" onClick={handleBuy} >Mua hàng</button>
                                                 <button
                                                     type="button"
-                                                    className="btn btn-danger"
+                                                    className="btn-modal"
                                                     data-toggle="modal"
                                                     data-target="#exampleModal"
                                                     data-product={JSON.stringify(product)}
                                                     onClick={() => handleShowModal(product)}
                                                 >
-                                                    Xem chi tiết
+                                                  View Detail
                                                 </button>
-                                            </div>
-
                                         </div>
                                     </div>
                                     <div className="title-product mt-3">
@@ -70,7 +64,7 @@ export default function RenderProduct() {
                                         >
                                             {product.Name.substring(0, 30)}
                                         </p>
-
+                                        <div style={{ textAlign: 'center' }}><Rate disabled defaultValue={product.Rating} /></div>
                                         {product.Discount === "Đang Khuyến mãi" ? <div className="price-product">
                                             <p
                                                 style={{

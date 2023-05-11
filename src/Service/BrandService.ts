@@ -25,6 +25,10 @@ export class BrandService extends BaseService {
     return this.get(`admin/searchProduct?q=${keyword}`,null);
   };
  
+  //GetDetails id 
+  ProducDetail = (id:any) =>{
+    return this.get(`product/${id}/slug`,null)
+  }
 }
 
 export const brand = new BrandService();

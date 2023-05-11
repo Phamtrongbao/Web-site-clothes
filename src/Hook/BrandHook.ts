@@ -45,3 +45,10 @@ export const useMutationOrders = (): UseMutationResult<Orders[], Error, Orders[]
   return useMutation<Orders[], Error, Orders[]>(PostProduct);
   };
 
+ //productDtail data
+export const getProductDetailData = async (id: any) => {
+  const response = await brand.ProducDetail(id);
+  return response.data;
+};
+
+

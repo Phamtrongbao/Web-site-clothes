@@ -1,8 +1,8 @@
 import React, { Fragment, useState } from 'react'
 import { Product } from '../../api/BrandType'
 import { Rate, notification } from 'antd';
-import { ShoppingCartOutlined} from '@ant-design/icons';
-import { useDispatch} from 'react-redux';
+import { ShoppingCartOutlined } from '@ant-design/icons';
+import { useDispatch } from 'react-redux';
 import { addToCarts } from '../../Redux/UserToolkit';
 
 
@@ -28,28 +28,28 @@ export default function ShowModalProduct(props: ShowModalProductProps) {
         console.log(size)
     };
     const addToCart = () => {
-        if (selectedColor && selectedSize) {          
+        if (selectedColor && selectedSize) {
             const newProduct = { ...product, Color: selectedColor, Size: selectedSize };
-            dispatch(addToCarts(newProduct))   
+            dispatch(addToCarts(newProduct))
         } else {
-           if (!selectedColor) {
-           notification.error({
-            message:"color not selected yet",
-            style: {
-                marginTop:60,
-              },
-           })
-           }else if (!selectedSize) {
-            notification.error({
-                message:"Haven't chosen the size yet",
-                style: {
-                    marginTop:60,
-                  },
-               })
-           }
+            if (!selectedColor) {
+                notification.error({
+                    message: "color not selected yet",
+                    style: {
+                        marginTop: 60,
+                    },
+                })
+            } else if (!selectedSize) {
+                notification.error({
+                    message: "Haven't chosen the size yet",
+                    style: {
+                        marginTop: 60,
+                    },
+                })
+            }
         }
     };
-  
+
 
     const ShowModel = () => {
         return product && (
@@ -64,7 +64,7 @@ export default function ShowModalProduct(props: ShowModalProductProps) {
                                 <div className="body-content">
                                     <h5 className="modal-title" id="exampleModalLabel">{product.Name}</h5>
                                     <p className='mt-2' style={{
-                                        fontFamily: "initial",
+                                        fontFamily: "-moz-initial",
                                         fontWeight: 700, fontSize: 16, color: 'grey'
                                     }}>{product.Description}</p>
 
@@ -146,21 +146,22 @@ export default function ShowModalProduct(props: ShowModalProductProps) {
                                             ))}
                                         </div>
                                     </div>
-                                    <div className="pay mt-3">
-                                        <p style={{
-                                            fontFamily: "initial",
-                                            fontWeight: 700,
-                                            fontSize: 18,
-                                            width: "50%", paddingTop: 10
-                                        }}>Thành Tiền: ()</p>
-
-
-                                        <button className='cart-btn' onClick={(event) => addToCart()}>  <ShoppingCartOutlined style={{ paddingTop: 11 }} /> <p>
-                                            Giỏ Hàng
+                                    <button style={{
+                                        width: "50%",
+                                        height: 50,
+                                        display: 'flex',
+                                        fontWeight: 800,
+                                        justifyContent: 'center',
+                                        background: 'black',
+                                        color: '#FFFF',
+                                        border: 'none',
+                                        marginTop: 20,
+                                        fontFamily: '-moz-initial',
+                                        fontSize: 20,
+                                        transition: 'all 0.8 ease-in-out'
+                                    }} className='add' onClick={(event) => addToCart()}>  <ShoppingCartOutlined style={{ paddingTop: 11 }} /> <p style={{ paddingTop: 6 }}>
+                                            ADD TO CART
                                         </p> </button>
-
-
-                                    </div>
                                 </div>
                             </div>
 

@@ -64,7 +64,7 @@
 .line-bottom {
     width: 100%;
     height: 1px;
-    background-color: rgb(155, 173, 83);
+    background-color: grey;
 }
 
 .price-product {
@@ -81,11 +81,24 @@
 
 .product-image {
     position: relative;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #f3f3f378;
 }
-
+.btn-modal{
+    margin-top: 310px;
+    width: 100%;
+    height: 40px;
+    border: solid 1px #FFFF;
+    background-color: #000;
+    color: #fff;
+    font-family: initial;
+    z-index: 1000;
+}
+.btn-modal:hover{
+    box-shadow: 0 0 0 2px #000, 0 0 1px 3px rgba(0,0,0,0.3), 0 1px 1px 3px rgba(0,0,0,0.3), 0 2px 2px 3px rgba(0,0,0,0.3), 0 4px 4px 3px rgba(0,0,0,0.3), 0 8px 8px 3px rgba(0,0,0,0.3);
+    transform: translateY(-4px);
+}
 .product-actions {
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #f3f3f378;
     display: none;
     position: absolute;
     bottom: 0px;
@@ -95,6 +108,7 @@
     height: 350px;
     transition: transform 0.5s ease-in-out;
     animation: slide-up 0.5s ease-in-out forwards;
+    z-index: 1000;
 }
 
 .product-image:hover .product-actions {

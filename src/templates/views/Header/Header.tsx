@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import "../../views/Header/header.css"
 import { SearchOutlined, ShoppingOutlined, CaretRightOutlined } from '@ant-design/icons';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import CartComponent from '../../../Component/RenderCart/Cart';
 import { Product } from '../../../api/BrandType';
 import { brand } from '../../../Service/BrandService';
 import axios from 'axios';
+import ProductDetails from '../../../Component/ProductDetails/ProductDetails';
 
 
 
@@ -14,6 +15,10 @@ import axios from 'axios';
 export default function Header(props: any) {
   const [products, setProducts] = useState<Product[]>([]);
   const [searchKeyword, setSearchKeyword] = useState<string>('');
+  const [searchPath, setSearchPath] = useState('/');
+  const navigate = useNavigate();
+
+  console.log(navigate)
   const productListRef = useRef<HTMLUListElement>(null);
   const storedUser = localStorage.getItem('user');
   const user = storedUser != null ? JSON.parse(storedUser) : null;
@@ -29,19 +34,25 @@ export default function Header(props: any) {
     setSearchKeyword(keyword);
     if (keyword === '') {
       setProducts([]);
+      setSearchPath('/product/');
     } else {
       try {
         const response = await brand.SearchProduct(keyword)
         setProducts(response.data);
+        setSearchPath(`/product/${keyword}`);
         if (productListRef.current) {
           productListRef.current.scrollIntoView({ behavior: 'smooth' });
         }
+        // navigate(`/search/${keyword}`);
+    
       } catch (error) {
         console.log(error);
       } 
     }
   };
- 
+  useEffect(() => {
+    window.history.pushState(null,'', searchPath);
+  }, [searchPath]);
   const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter' && products.length > 0) {
       window.location.href = `/${products[0]._id}/${products[0].Name}}`;
@@ -104,10 +115,16 @@ export default function Header(props: any) {
                     <NavLink onClick={()=>{
                       setProducts([])
                       setSearchKeyword('')
-                    }} to={`/${product._id}/${product.Name}`} style={{ paddingLeft: 10, color: 'red', paddingTop: 10, fontFamily: '-moz-initial', fontWeight: 500,textDecoration:'none' }}>
+                    }} to={`/product/${product._id}/${product.Name}`
+                    } style={{ paddingLeft: 10, color: '#223242', fontFamily: '-moz-initial', fontWeight: 500,textDecoration:'none' }}>
                     {product.Name.length > 15
                   ? product.Name.substring(0, 15) + '...'
                   : product.Name}
+                 <div>
+                 {product.Discount==="Đang Khuyến mãi"?
+                 <div style={{display:'flex'}}><del>{Number(product.Price).toLocaleString()}đ</del> <p style={{color:'red',paddingLeft:10}}>{(Number(product.Price)-Number(product.PriceDiscount)).toLocaleString()}đ</p></div>:
+                 <p>{Number(product.Price).toLocaleString()}đ</p> }  
+                  </div>  
                     </NavLink>
                   </li>
                 ))}
@@ -168,10 +185,10 @@ export default function Header(props: any) {
               </div>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href='/page'>NEWS</a>
+              <a className="nav-link" href='/news'>NEWS</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href='/page'>CONTACT</a>
+              <a className="nav-link" href='/contact'>CONTACT</a>
             </li>
           </ul>
 

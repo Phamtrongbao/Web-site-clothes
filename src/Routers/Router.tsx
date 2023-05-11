@@ -13,8 +13,11 @@ import { BrowserRouter } from 'react-router-dom';
 import Register from '../Component/Register/Register';
 import ShoppingCart from '../Component/RenderCart/ShoppingCart';
 import Bill from '../Component/RenderCart/Bill';
-import Page from '../Component/Page/Page';
+
 import ProductDetails from '../Component/ProductDetails/ProductDetails';
+import Page from '../Component/Page/Page';
+import News from '../Component/Page/News';
+import Contact from '../Component/Page/Contact';
 
 
 
@@ -65,8 +68,22 @@ const Routers = () => {
                     element:<Page/>
                 },
                 {
-                    path:'/:id/:slug',
+                    path:'/product/:id/:slug',
                     element:<ProductDetails/>
+                },
+                {
+                    path:'/product/:keyword',
+                    element:<ProductDetails/>
+                },
+                {
+                    
+                    path:'/news',
+                    element:<News/>
+                },
+                {
+                    
+                    path:'/contact',
+                    element:<Contact/>
                 }
             ],
         },
